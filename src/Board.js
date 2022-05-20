@@ -98,7 +98,7 @@ class Board extends Component {
             <div>POP-POP</div>
             <div>
               <div className="Win"> WIN! </div>
-              <p> Share Your Score in Twitter </p>
+              <p> Share Your Score </p>
             </div>
             <div>{ this.state.moves } </div>
           </div>
