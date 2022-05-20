@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cell from "./Cell";
+import Title from "./Title";
 import './Board.css';
 
 class Board extends Component {
@@ -11,15 +12,13 @@ class Board extends Component {
   constructor( props ) {
     super( props );
 
-    // TODO: set initial state
     this.state = {
       hasWon: false,
+      helpAsked: false,
       board: this.createBoard(),
       moves: 0
     }
   }
-
-  /** create a board nrows high/ncols wide, each cell randomly pop or unpop */
 
   createBoard() {
     let board = [];
@@ -33,7 +32,35 @@ class Board extends Component {
     return board;
   }
 
-  /** handle changing a cell: update board & determine if winner */
+  askHelp() {
+    let helpAsked = this.state.helpAsked;
+    let hasWon = this.state.hasWon;
+    let board = this.state.board;
+    let moves = this.state.moves;
+    {
+      this.state.hasWon
+        ? this.setState( {
+          board: this.createBoard(),
+          hasWon: !hasWon,
+          moves: 0
+        } )
+        : this.setState( {
+          helpAsked: !helpAsked
+        } )
+    }
+  }
+
+  share() {
+    if ( navigator && navigator.clipboard && navigator.clipboard.writeText )
+      setTimeout( () => {
+        alert( 'Copied to clipboard! Paste it at your social media.' );
+      }, 10 );
+    return navigator.clipboard.writeText(
+      `I played POP-POP and won after ${ this.state.moves } move${ this.state.moves > 1 ? 's' : '' }.
+        Play at https://poppop.netlify.app/.`
+    );
+    return Promise.reject( 'The Clipboard API is not available.' );
+  }
 
   flipCellsAround( coord ) {
     let { ncols, nrows } = this.props;
@@ -43,7 +70,6 @@ class Board extends Component {
 
 
     function flipCell( y, x ) {
-      // if this coord is actually on board, flip it
 
       if ( x >= 0 && x < ncols && y >= 0 && y < nrows ) {
         board[ y ][ x ] = !board[ y ][ x ];
@@ -63,9 +89,6 @@ class Board extends Component {
   }
 
 
-  /** Render game board or winning message. */
-
-  // make table board
   makeTable() {
     let tableBoard = [];
     for ( let y = 0; y < this.props.nrows; y++ ) {
@@ -95,16 +118,30 @@ class Board extends Component {
       <div>
         { this.state.hasWon ? (
           <div className='Board'>
-            <div>POP-POP</div>
-            <div>
+            <Title askHelp={ () => this.askHelp() } />
+            <div className='TextContainer'>
               <div className="Win"> WIN! </div>
-              <p> Share Your Score </p>
+              <div className='TextContainer'>
+                <p onClick={ () => this.share() } style={ { cursor: "pointer", textAlign: "center" } }>Share Your Score</p>
+              </div>
+            </div>
+            <div>{ this.state.moves } </div>
+          </div>
+        ) : this.state.helpAsked ? (
+          <div className='Board'>
+            <Title askHelp={ () => this.askHelp() } />
+            <div className='TextContainer'>
+              <div>
+                <p> In this game, your objective is to pop all the cells. When you click on any of them, the cell position is reversed. Likewise, the cells that are above, on the left, on the right and below are also inverted. </p>
+                <p> A counter at the bottom will measure your performance. Try to solve it with as few tries as possible. </p>
+                <p> App by Alexandre Leitão Santos,<br />based on Lights-Out. 2022.</p>
+              </div>
             </div>
             <div>{ this.state.moves } </div>
           </div>
         ) : (
           <div className='Board'>
-            <div>POP-POP</div>
+            <Title askHelp={ () => this.askHelp() } />
             <div>{ this.makeTable() }</div>
             <div>{ this.state.moves } </div>
           </div>
