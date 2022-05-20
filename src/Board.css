@@ -38,3 +38,23 @@ p {
   text-shadow: initial;
   color: var(--shadow)
 }
+
+@media only screen and (max-width: 500px) {
+  .Board {
+    width: 100vw;
+    height: 100vh;
+    
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .Board {
+    width: 100vw;
+    height: 100vh;
+    
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

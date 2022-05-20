@@ -31,3 +31,16 @@
   transition: box-shadow 0.1s;    
 }
 
+@media only screen and (max-width: 500px) {
+  .Cell {
+    width: 10vmin;
+    height: 10vmin;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .Cell {
+    width: 10vmin;
+    height: 10vmin;
+  }
+}
