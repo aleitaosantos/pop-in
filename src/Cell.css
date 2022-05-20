@@ -1,0 +1,25 @@
+.Cell {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: radial-gradient(at 25% 25%,#ffffff 0%, #e3f4fc 25%, #dcdae6 50%, #ccb8cc 100%);
+  box-shadow:
+  inset -5px -5px 10px #ccb8cc,
+  inset 5px 5px 10px #e3f4fc,
+  5px 5px 10px #ccb8cc,
+    -5px -5px 5px -2.5px #e3f4fc;
+  transition: box-shadow 0.1s;
+}
+
+.Cell-pop {
+  cursor: pointer;
+  background: radial-gradient(at 66% 66%,#e3f4fc 0%, #dcdae6 50%, #ccb8cc 100%);
+  box-shadow:
+    inset -5px -5px 10px -2.5px #e3f4fc,
+    inset 5px 5px 10px -2.5px #ccb8cc,
+    -2.5px -2.5px 5px #ccb8cc,
+    2.5px 2.5px 5px #e3f4fc;
+  transition: box-shadow 0.1s;    
+}
+

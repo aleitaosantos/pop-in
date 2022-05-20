@@ -1,0 +1,18 @@
+.Board {
+  border-radius: 50px;
+  box-shadow:
+    inset 5px 5px 10px -2.5px #ccb8cc,
+    inset -5px -5px 10px -2.5px #e1f2fa,
+    -2.5px -2.5px 5px #ccb8cc,
+    2.5px 2.5px 5px #e1f2fa; 
+  padding: 12.5px;   
+}
+
+.Board table {
+  border-collapse: collapse;
+  border: none;
+}
+
+.Board td {
+  padding: 12.5px;
+}
