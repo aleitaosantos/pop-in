@@ -53,7 +53,7 @@ class Board extends Component {
       }, 10 );
     return navigator.clipboard.writeText(
       `I played POP-POP and won after ${ this.state.moves } move${ this.state.moves > 1 ? 's' : '' }.
-        Play at https://poppop.netlify.app/.`
+        Play at https://poppop.netlify.app/. #PopPopGame`
     )
   }
 
