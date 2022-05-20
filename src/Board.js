@@ -35,19 +35,15 @@ class Board extends Component {
   askHelp() {
     let helpAsked = this.state.helpAsked;
     let hasWon = this.state.hasWon;
-    let board = this.state.board;
-    let moves = this.state.moves;
-    {
-      this.state.hasWon
-        ? this.setState( {
-          board: this.createBoard(),
-          hasWon: !hasWon,
-          moves: 0
-        } )
-        : this.setState( {
-          helpAsked: !helpAsked
-        } )
-    }
+    this.state.hasWon
+      ? this.setState( {
+        board: this.createBoard(),
+        hasWon: !hasWon,
+        moves: 0
+      } )
+      : this.setState( {
+        helpAsked: !helpAsked
+      } )
   }
 
   share() {
@@ -58,8 +54,7 @@ class Board extends Component {
     return navigator.clipboard.writeText(
       `I played POP-POP and won after ${ this.state.moves } move${ this.state.moves > 1 ? 's' : '' }.
         Play at https://poppop.netlify.app/.`
-    );
-    return Promise.reject( 'The Clipboard API is not available.' );
+    )
   }
 
   flipCellsAround( coord ) {
