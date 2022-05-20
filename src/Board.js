@@ -4,8 +4,8 @@ import './Board.css';
 
 class Board extends Component {
   static defaultProps = {
-    nrows: 5,
-    ncols: 5,
+    nrows: 1,
+    ncols: 1,
     chanceLightStartsOn: 0.25
   }
   constructor( props ) {
@@ -14,7 +14,8 @@ class Board extends Component {
     // TODO: set initial state
     this.state = {
       hasWon: false,
-      board: this.createBoard()
+      board: this.createBoard(),
+      moves: 0
     }
   }
 
@@ -37,6 +38,7 @@ class Board extends Component {
   flipCellsAround( coord ) {
     let { ncols, nrows } = this.props;
     let board = this.state.board;
+    let moves = this.state.moves;
     let [ y, x ] = coord.split( "-" ).map( Number );
 
 
@@ -53,11 +55,9 @@ class Board extends Component {
     flipCell( y, x + 1 ); //pop right
     flipCell( y - 1, x ); //pop below
     flipCell( y + 1, x ); //pop above
-    // flipCell( y - 1, x + 1 ); //hex
-    // flipCell( y + 1, x - 1 ); //hex
 
-    // win when every cell is turned off
-    // TODO: determine is the game has been won
+    this.setState( { moves: moves + 1 } )
+
     let hasWon = board.every( row => row.every( cell => cell ) );
     this.setState( { board: board, hasWon: hasWon } );
   }
@@ -83,21 +83,30 @@ class Board extends Component {
       tableBoard.push( <tr key={ y }>{ row }</tr > );
     }
     return (
-      <div className='Board'>
-        <table >
-          <tbody>{ tableBoard }</tbody>
-        </table>
-      </div>
+
+      <table >
+        <tbody>{ tableBoard }</tbody>
+      </table>
+
     );
   }
   render() {
     return (
       <div>
         { this.state.hasWon ? (
-          < div className='winner'> YOU WIN! </div>
+          <div className='Board'>
+            <div>POP-POP</div>
+            <div>
+              <div className="Win"> WIN! </div>
+              <p> Share Your Score in Twitter </p>
+            </div>
+            <div>{ this.state.moves } </div>
+          </div>
         ) : (
-          <div>
-            { this.makeTable() }
+          <div className='Board'>
+            <div>POP-POP</div>
+            <div>{ this.makeTable() }</div>
+            <div>{ this.state.moves } </div>
           </div>
         )
         }

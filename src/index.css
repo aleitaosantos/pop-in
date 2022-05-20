@@ -14,13 +14,21 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  font-family: sans-serif;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
   font-size: 25px;
+  letter-spacing: 0.25em;
+  color: var(--midtone-high);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--midtone-high);  
-  color: white;
   text-align: center;
+  text-shadow:
+    1.25px 1.25px 2.5px var(--shadow),
+    -2.5px -2.5px 5px var(--highlight),
+    -1.25px -1.25px 2.5px #ffffff,
+    5px 5px 10px var(--midtone-low);
+
 }
 
 #root {

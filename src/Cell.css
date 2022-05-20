@@ -10,7 +10,7 @@
   inset 2.5px 2.5px 5px -2.5px var(--highlight),
   inset 2.5px 2.5px 5px #ffffff,
   2.5px 2.5px 5px var(--shadow),
-  5px 5px 10px var(--midtone-low),
+  10px 10px 10px var(--midtone-low),
   -5px -5px 10px -2.5px var(--highlight),
   -1px -1px 2px -1px #ffffff;
   transition: box-shadow 0.1s;
@@ -21,13 +21,13 @@
   background: radial-gradient(at 66% 66%,#e3f4fc 0%, #dcdae6 33%, #ccb8cc 66%, #b0acbf 100%);
   box-shadow:
   inset 5px 5px 10px var(--shadow),
-  inset 5px 5px 10px -5px var(--midtone-low),
   inset -2.5px -2.5px 5px -2.5px var(--highlight),
   inset -2.5px -2.5px 5px #ffffff,
+  inset 5px 5px 10px -5px var(--midtone-low),
   1px 1px 2px -1px #ffffff,
   2.5px 2.5px 5px -2.5px var(--highlight),
-  -1px -1px 2px var(--midtone-low),
-  -1px -1px 2px var(--shadow);
+  -1px -1px 2px var(--shadow),
+  -2.5px -2.5px 5px var(--midtone-low);
   transition: box-shadow 0.1s;    
 }
 

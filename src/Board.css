@@ -1,14 +1,21 @@
 .Board {
-  border-radius: 50px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;    
+  border-radius: 25px;
   box-shadow:
   inset 5px 5px 10px var(--shadow),
-  inset 5px 5px 10px -5px var(--midtone-low),
   inset -2.5px -2.5px 5px -2.5px var(--highlight),
   inset -2.5px -2.5px 5px #ffffff,
+  inset 5px 5px 10px -5px var(--midtone-low),
   1px 1px 2px -1px #ffffff,
   2.5px 2.5px 5px -2.5px var(--highlight),
-  -2.5px -2.5px 5px var(--midtone-low),
-  -1px -1px 2px var(--shadow);
+  -1px -1px 2px var(--shadow),
+  -2.5px -2.5px 5px var(--midtone-low);
   padding: 12.5px;   
 }
 
@@ -19,4 +26,15 @@
 
 .Board td {
   padding: 12.5px;
+}
+
+.Win {
+  font-size: 2em;
+}
+
+p {
+  font-weight: 400;
+  font-size: 0.75em;
+  text-shadow: initial;
+  color: var(--shadow)
 }
