@@ -1,3 +1,10 @@
+:root {
+  --shadow: #c1b9c6;
+  --midtone-low: #d5d5dd;
+  --midtone-high: #e0e4eb;
+  --highlight: #ecf9f9;
+}
+
 code {
   font-family: monospace;
 }
@@ -11,7 +18,7 @@ body {
   font-size: 25px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #dcdae6;  
+  background-color: var(--midtone-high);  
   color: white;
   text-align: center;
 }
