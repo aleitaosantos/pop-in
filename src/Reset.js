@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import "./Help.css"
+import "./Reset.css"
 
 
-class Help extends Component {
+class Reset extends Component {
   constructor( props ) {
     super( props );
     this.handleClick = this.handleClick.bind( this );
@@ -14,10 +14,10 @@ class Help extends Component {
 
   render() {
     return (
-      <div className="Help" onClick={ this.handleClick }><i class="fa-solid fa-arrows-rotate"></i></div>
+      <div className="Reset" onClick={ this.handleClick }><i class="fa-solid fa-arrows-rotate"></i></div>
     )
   }
 }
 
 
-export default Help
+export default Reset

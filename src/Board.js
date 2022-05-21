@@ -41,7 +41,6 @@ class Board extends Component {
   }
 
   reset() {
-    let hasWon = this.state.hasWon;
     this.setState( {
       board: this.createBoard(),
       hasWon: false,

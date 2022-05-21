@@ -13,9 +13,10 @@ class Help extends Component {
   }
 
   render() {
-    let icon = ( this.props.helpAsked ? <i class="fa-solid fa-xmark"></i> : <i class="fa-solid fa-question"></i> );
     return (
-      <div className="Help" onClick={ this.handleClick }>{ icon }</div>
+      <div className="Help" onClick={ this.handleClick }>{
+        this.props.helpAsked ? <i class="fa-solid fa-xmark"></i> : <i class="fa-solid fa-question"></i>
+      }</div>
     )
   }
 }
