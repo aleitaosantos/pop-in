@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Cell from "./Cell";
-import Title from "./Title";
+import Reset from './Reset'
+import Help from "./Help";
 import './Board.css';
 
 class Board extends Component {
@@ -34,16 +35,19 @@ class Board extends Component {
 
   askHelp() {
     let helpAsked = this.state.helpAsked;
+    this.setState( {
+      helpAsked: !helpAsked
+    } )
+  }
+
+  reset() {
     let hasWon = this.state.hasWon;
-    this.state.hasWon
-      ? this.setState( {
-        board: this.createBoard(),
-        hasWon: !hasWon,
-        moves: 0
-      } )
-      : this.setState( {
-        helpAsked: !helpAsked
-      } )
+    this.setState( {
+      board: this.createBoard(),
+      hasWon: false,
+      helpAsked: false,
+      moves: 0
+    } )
   }
 
   share() {
@@ -111,20 +115,23 @@ class Board extends Component {
   render() {
     return (
       <div>
-        { this.state.hasWon ? (
-          <div className='Board'>
-            <Title askHelp={ () => this.askHelp() } />
+        <div className='Board'>
+          <div className='HeaderContainer'>
+            <Reset reset={ () => this.reset() } />
+            <div>POP-POP</div>
+            <Help askHelp={ () => this.askHelp() } />
+          </div>
+
+
+          { this.state.hasWon ? (
             <div className='TextContainer'>
               <div className="Win"> WIN! </div>
               <div className='TextContainer'>
                 <p onClick={ () => this.share() } style={ { cursor: "pointer", textAlign: "center" } }>Share Your Score</p>
               </div>
             </div>
-            <div>{ this.state.moves } </div>
-          </div>
-        ) : this.state.helpAsked ? (
-          <div className='Board'>
-            <Title askHelp={ () => this.askHelp() } />
+
+          ) : this.state.helpAsked ? (
             <div className='TextContainer'>
               <div>
                 <p> In this game, your objective is to pop all the cells. When you click on any of them, the cell position is reversed. Likewise, the cells that are above, on the left, on the right and below are also inverted. </p>
@@ -132,16 +139,14 @@ class Board extends Component {
                 <p> App by Alexandre Leitão Santos,<br />based on Lights-Out. 2022.</p>
               </div>
             </div>
-            <div>{ this.state.moves } </div>
-          </div>
-        ) : (
-          <div className='Board'>
-            <Title askHelp={ () => this.askHelp() } />
-            <div>{ this.makeTable() }</div>
-            <div>{ this.state.moves } </div>
-          </div>
-        )
-        }
+          ) : (
+            <div >
+              { this.makeTable() }
+            </div>
+          )
+          }
+          <div className="FooterContainer">{ this.state.moves }</div>
+        </div>
       </div>
     );
   }

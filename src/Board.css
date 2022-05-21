@@ -32,11 +32,23 @@
   font-size: 2em;
 }
 
+.HeaderContainer {
+  width: calc(100% - 20px);
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .TextContainer {
   display: flex;
   flex-direction: column;
   align-items: center;  
   width: 75%;
+}
+
+.FooterContainer {
+  width: calc(100% - 20px);
+  margin: 10px;
 }
 
 p {
