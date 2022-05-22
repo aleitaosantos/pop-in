@@ -14,7 +14,7 @@ class Reset extends Component {
 
   render() {
     return (
-      <div className="Reset" onClick={ this.handleClick }><i class="fa-solid fa-arrows-rotate"></i></div>
+      <div className="Reset" onClick={ this.handleClick }><i className="fa-solid fa-arrows-rotate"></i></div>
     )
   }
 }

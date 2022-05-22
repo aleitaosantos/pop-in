@@ -15,7 +15,7 @@ class Help extends Component {
   render() {
     return (
       <div className="Help" onClick={ this.handleClick }>{
-        this.props.helpAsked ? <i class="fa-solid fa-xmark"></i> : <i class="fa-solid fa-question"></i>
+        this.props.helpAsked ? <i class="fa-solid fa-xmark"></i> : <i className="fa-solid fa-question"></i>
       }</div>
     )
   }

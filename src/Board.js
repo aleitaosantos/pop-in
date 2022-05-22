@@ -11,14 +11,19 @@ class Board extends Component {
   }
   constructor( props ) {
     super( props );
+    // this.initFlip = this.initFlip.bind( this );
+    // this.flipCellsAround = this.flipCellsAround.bind( this )
 
     this.state = {
       hasWon: false,
       helpAsked: false,
       board: this.createBoard(),
+      initFlip: this.initFlip(),
       moves: 0
     }
   }
+
+
 
   createBoard() {
     let board = [];
@@ -29,6 +34,7 @@ class Board extends Component {
       }
       board.push( row );
     }
+
     return board;
   }
 
@@ -54,8 +60,7 @@ class Board extends Component {
         alert( 'Copied to clipboard! Paste it at your social media.' );
       }, 10 );
     return navigator.clipboard.writeText(
-      `I played POP-POP and won after ${ this.state.moves } move${ this.state.moves > 1 ? 's' : '' }.
-        Play at https://poppop.netlify.app/. #PopPopGame`
+      `I played POP-POP and won after ${ this.state.moves } move${ this.state.moves > 1 ? 's' : '' }. Play at https://poppop.netlify.app/. #PopPopGame`
     )
   }
 
@@ -85,7 +90,6 @@ class Board extends Component {
     this.setState( { board: board, hasWon: hasWon } );
   }
 
-
   makeTable() {
     let tableBoard = [];
     for ( let y = 0; y < this.props.nrows; y++ ) {
@@ -110,6 +114,11 @@ class Board extends Component {
 
     );
   }
+
+  initFlip() {
+    console.log( 'FLIP CELLS' )
+  }
+
   render() {
     return (
       <div>
